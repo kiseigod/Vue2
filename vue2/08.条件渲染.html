@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div class="root">
+        <h2>当前n的值:{{n}}</h2>
+        <button @click="n++">点击n+1</button>
+        <div v-show="n === 1">你好！</div>
+        <div v-show="n === 2">你好！！</div>
+        <div v-show="n === 3">你好！！！</div>
+        <template v-if="n === 1">
+           <h1>你好</h1>
+           <h1>你好</h1>
+           <h1>你好</h1>
+        </template>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'.root',
+            data:{
+                n:0
+            }
+        })
+    </script>
+</body>
+</html>

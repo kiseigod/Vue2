@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div class="root">
+        姓：<input type="text" v-model="firstname"><br><br>
+        名：<input type="text" v-model="lastname"><br><br>
+        全名：<span>{{fullname}}</span>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '.root',
+            data: {
+                firstname: '张',
+                lastname: '三',
+                fullname: '张-三'
+            },
+            // computed: {    // 只调用一次 ，第一次会缓存，剩下的调用缓存
+            //     fullname:{
+            //         // 当有人读取fullname时，get就会被调用，且返回值作为fullname的值
+            //         get(){
+            //             return this.firstname.slice(0,3) + '-' + this.lastname;
+            //         },
+            //         set(value){
+            //             const arr = value.split('-');
+            //             this.firstname = arr[0];
+            //             this.lastname = arr[1];
+            //         }
+            //     }
+            // }
+
+            watch: {
+                firstname(val) {
+                    setTimeout(()=>{
+                        this.fullname = val + '-' + this.lastname;
+                    },1000)    
+                },
+                lastname(val){
+                    this.fullname = this.firstname + '-' + val;
+                }
+
+            }
+            // methods: {    //用几次调几次
+            //     fullname(){
+            //         return this.firstname.slice(0,3) + '-' + this.lastname;
+            //     }
+            // }
+        })
+    </script>
+</body>
+
+</html>

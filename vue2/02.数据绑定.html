@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 
+            单向数据绑定: <input type="text" v-bind:value="name"><br>
+             双向数据绑定: <input type="text" v-model:value="name"> 
+        -->
+        <!-- 简写 -->
+        单向数据绑定: <input type="text" :value="name"><br>
+        双向数据绑定: <input type="text" v-model="name">
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#root', // el 的第一种写法
+            data: {  // data 的第一种写法   对象式
+                name: '你好'
+            }
+            // data 的第二种写法   函数式
+            // data(){
+            //     return{
+            //         name: '你好'
+            //     }
+            // }
+        })
+
+        // el 的第两种写法
+        // const v = new Vue({
+        //     data: {
+        //         name: '你好'
+        //     }
+        // });
+        // v.$mount('#root')
+    </script>
+</body>
+
+</html>
